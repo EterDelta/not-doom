@@ -61,3 +61,7 @@ GTAGS
 # VSCode settings
 
 /.vscode/
+
+# Fork resources
+
+/resources
