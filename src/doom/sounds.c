@@ -225,5 +225,10 @@ sfxinfo_t S_sfx[] =
   SOUND("skesit", 70),
   SOUND("skeatk", 70),
   SOUND("radio",  60),
+  SOUND("crprp1", 96),
+  SOUND("crprp2", 96),
+  SOUND("crprp3", 96),
+  SOUND("crprp4", 96),
+  SOUND("crprsw", 70)
 };
 

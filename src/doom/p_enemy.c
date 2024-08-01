@@ -2022,3 +2022,26 @@ void A_PlayerScream (mobj_t* mo)
     
     S_StartSound (mo, sound);
 }
+
+
+
+// Creeper actions
+
+#define SWELL_RANGE (256 * FRACUNIT)
+
+void A_SwellCreeper(mobj_t* obj) {
+    mobj_t* target = obj->target;
+
+    if (target == NULL ||
+        P_AproxDistance(target->x - obj->x, target->y - obj->y) >= SWELL_RANGE) {
+        P_SetMobjState(obj, obj->info->seestate);
+    }
+}
+
+void A_ExplodeCreeper(mobj_t* obj) {
+    P_RadiusAttack(obj, obj->target, SWELL_RANGE >> FRACBITS);
+}
+
+void A_PainCreeper(mobj_t* obj) {
+    S_StartSound(obj, sfx_crprp1 + (P_Random() % 4));
+}

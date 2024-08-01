@@ -43,7 +43,7 @@ const char *sprnames[] = {
     "POL3","POL1","POL6","GOR2","GOR3","GOR4","GOR5","SMIT","COL1","COL2",
     "COL3","COL4","CAND","CBRA","COL6","TRE1","TRE2","ELEC","CEYE","FSKU",
     "COL5","TBLU","TGRN","TRED","SMBT","SMGT","SMRT","HDB1","HDB2","HDB3",
-    "HDB4","HDB5","HDB6","POB1","POB2","BRS1","TLMP","TLP2", NULL
+    "HDB4","HDB5","HDB6","POB1","POB2","BRS1","TLMP","TLP2","CRPR", NULL
 };
 
 
@@ -122,6 +122,9 @@ void A_BrainSpit();
 void A_SpawnSound();
 void A_SpawnFly();
 void A_BrainExplode();
+void A_SwellCreeper();
+void A_ExplodeCreeper();
+void A_PainCreeper();
 
 
 state_t	states[NUMSTATES] = {
@@ -1091,7 +1094,29 @@ state_t	states[NUMSTATES] = {
     {SPR_TLP2,32768,4,{NULL},S_TECH2LAMP2,0,0},	// S_TECH2LAMP
     {SPR_TLP2,32769,4,{NULL},S_TECH2LAMP3,0,0},	// S_TECH2LAMP2
     {SPR_TLP2,32770,4,{NULL},S_TECH2LAMP4,0,0},	// S_TECH2LAMP3
-    {SPR_TLP2,32771,4,{NULL},S_TECH2LAMP,0,0}	// S_TECH2LAMP4
+    {SPR_TLP2,32771,4,{NULL},S_TECH2LAMP,0,0},	// S_TECH2LAMP4
+    // Creeper states
+    {SPR_CRPR,0,10,{A_Look},S_CRPR_STND2,0,0},              // S_CRPR_STND1
+    {SPR_CRPR,1,10,{A_Look},S_CRPR_STND1,0,0},              // S_CRPR_STND2
+    {SPR_CRPR,0,3,{A_Chase},S_CRPR_RUN2,0,0},               // S_CRPR_RUN1
+    {SPR_CRPR,0,3,{A_Chase},S_CRPR_RUN3,0,0},               // S_CRPR_RUN2
+    {SPR_CRPR,1,3,{A_Chase},S_CRPR_RUN4,0,0},               // S_CRPR_RUN3
+    {SPR_CRPR,1,3,{A_Chase},S_CRPR_RUN5,0,0},               // S_CRPR_RUN4
+    {SPR_CRPR,2,3,{A_Chase},S_CRPR_RUN6,0,0},               // S_CRPR_RUN5
+    {SPR_CRPR,2,3,{A_Chase},S_CRPR_RUN1,0,0},               // S_CRPR_RUN6
+    {SPR_CRPR,32771,5,{A_SwellCreeper},S_CRPR_ATK2,0,0},    // S_CRPR_ATK1
+    {SPR_CRPR,1,5,{A_SwellCreeper},S_CRPR_ATK3,0,0},        // S_CRPR_ATK2
+    {SPR_CRPR,32771,5,{A_SwellCreeper},S_CRPR_ATK4,0,0},    // S_CRPR_ATK3
+    {SPR_CRPR,1,5,{A_SwellCreeper},S_CRPR_ATK5,0,0},        // S_CRPR_ATK4
+    {SPR_CRPR,32771,5,{A_SwellCreeper},S_CRPR_ATK6,0,0},    // S_CRPR_ATK5
+    {SPR_CRPR,1,5,{A_SwellCreeper},S_CRPR_ATK7,0,0},        // S_CRPR_ATK6
+    {SPR_CRPR,32771,5,{A_SwellCreeper},S_CRPR_ATK8,0,0},    // S_CRPR_ATK7
+    {SPR_CRPR,1,5,{A_SwellCreeper},S_CRPR_ATK9,0,0},        // S_CRPR_ATK8
+    {SPR_CRPR,32771,5,{A_SwellCreeper},S_CRPR_ATK10,0,0},   // S_CRPR_ATK9
+    {SPR_CRPR,1,5,{A_SwellCreeper},S_CRPR_DIE1,0,0},        // S_CRPR_ATK10
+    {SPR_CRPR,4,10,{A_PainCreeper},S_CRPR_RUN1,0,0},        // S_CRPR_PAIN
+    {SPR_CRPR,5,5,{A_ExplodeCreeper},S_CRPR_DIE2,0,0},      // S_CRPR_DIE1
+    {SPR_CRPR,6,5,{NULL},S_NULL,0,0}                        // S_CRPR_DIE2
 };
 
 
@@ -4657,6 +4682,33 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
 	sfx_None,		// activesound
 	MF_NOBLOCKMAP,		// flags
 	S_NULL		// raisestate
+    },
+
+    // Creeper info
+    {                       // MT_CREEPER
+	6001,                   // doomednum
+	S_CRPR_STND1,           // spawnstate
+	70,                     // spawnhealth
+	S_CRPR_RUN1,            // seestate
+	sfx_None,               // seesound
+	8,                      // reactiontime
+	sfx_crprsw,             // attacksound
+	S_CRPR_PAIN,            // painstate
+	255,                    // painchance
+	sfx_None,               // painsound
+	S_CRPR_ATK1,            // meleestate
+	S_NULL,                 // missilestate
+	S_CRPR_DIE1,            // deathstate
+	S_NULL,                 // xdeathstate
+	sfx_barexp,             // deathsound
+	16,                     // speed
+	20 * FRACUNIT,          // radius
+	56 * FRACUNIT,          // height
+	100,                    // mass
+	0,                      // damage
+	sfx_None,               // activesound
+	MF_SOLID|MF_SHOOTABLE,  // flags
+	S_NULL                  // raisestate
     }
 };
 

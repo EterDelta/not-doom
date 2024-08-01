@@ -164,6 +164,7 @@ typedef enum
     SPR_BRS1,
     SPR_TLMP,
     SPR_TLP2,
+    SPR_CRPR,
     NUMSPRITES
 
 } spritenum_t;
@@ -1137,6 +1138,27 @@ typedef enum
     S_TECH2LAMP2,
     S_TECH2LAMP3,
     S_TECH2LAMP4,
+    S_CRPR_STND1,
+    S_CRPR_STND2,
+    S_CRPR_RUN1,
+    S_CRPR_RUN2,
+    S_CRPR_RUN3,
+    S_CRPR_RUN4,
+    S_CRPR_RUN5,
+    S_CRPR_RUN6,
+    S_CRPR_ATK1,
+    S_CRPR_ATK2,
+    S_CRPR_ATK3,
+    S_CRPR_ATK4,
+    S_CRPR_ATK5,
+    S_CRPR_ATK6,
+    S_CRPR_ATK7,
+    S_CRPR_ATK8,
+    S_CRPR_ATK9,
+    S_CRPR_ATK10,
+    S_CRPR_PAIN,
+    S_CRPR_DIE1,
+    S_CRPR_DIE2,
     NUMSTATES
 } statenum_t;
 
@@ -1294,6 +1316,7 @@ typedef enum {
     MT_MISC84,
     MT_MISC85,
     MT_MISC86,
+    MT_CREEPER,
     NUMMOBJTYPES
 
 } mobjtype_t;

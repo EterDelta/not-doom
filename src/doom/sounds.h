@@ -221,6 +221,11 @@ typedef enum
     sfx_skesit,
     sfx_skeatk,
     sfx_radio,
+    sfx_crprp1,
+    sfx_crprp2,
+    sfx_crprp3,
+    sfx_crprp4,
+    sfx_crprsw,
     NUMSFX
 } sfxenum_t;
 
