@@ -100,6 +100,7 @@ gameaction_t    gameaction;
 gamestate_t     gamestate; 
 skill_t         gameskill; 
 boolean		respawnmonsters;
+boolean 	spawnCreepers;
 int             gameepisode; 
 int             gamemap; 
 
@@ -1849,6 +1850,8 @@ G_InitNew
 	episode = 3;
     }
     */
+
+    spawnCreepers = (skill == sk_creepers);
 
     if (skill > sk_nightmare)
 	skill = sk_nightmare;

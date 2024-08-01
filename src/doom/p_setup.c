@@ -388,6 +388,18 @@ void P_LoadThings (int lump)
 	spawnthing.type = SHORT(mt->type);
 	spawnthing.options = SHORT(mt->options);
 	
+    if (spawnCreepers) {
+        // Common enemies get a chance to be Creepers
+        switch (SHORT(spawnthing.type)) {
+            case 9:
+            case 3001:
+            case 3002:
+            case 3004:
+                if (P_Random() > 125) spawnthing.type = 6001;
+                break;
+        }
+    }
+
 	P_SpawnMapThing(&spawnthing);
     }
 

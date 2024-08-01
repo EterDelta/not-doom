@@ -95,7 +95,8 @@ typedef enum
     sk_easy,
     sk_medium,
     sk_hard,
-    sk_nightmare
+    sk_nightmare,
+    sk_creepers
 } skill_t;
 
 boolean D_ValidGameMode(GameMission_t mission, GameMode_t mode);

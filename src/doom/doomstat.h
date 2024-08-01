@@ -98,6 +98,9 @@ extern  int             timelimit;
 // Nightmare mode flag, single player.
 extern  boolean         respawnmonsters;
 
+// Creepers mode flag
+extern boolean spawnCreepers;
+
 // Netgame? Only true if >1 player.
 extern  boolean	netgame;
 
