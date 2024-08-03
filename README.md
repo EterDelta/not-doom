@@ -14,13 +14,8 @@ Most things you can find here are showcased in my channel.
 
 ## Installation
 
-The easiest way to test this is to download a build from the Releases page, it comes along with the project WAD and dependencies.
+The easiest way to test this is to download a build from the Releases page, it comes along with the project WAD (`not-doom.wad`) and dependencies (`*.dll`). The game will load the files automatically.
 
-You'll launch the game using the `merge` option Chocolate Doom provides.
-
-```bash
-not-doom.exe -merge not-doom.wad
-```
-Remember you'll also need to obtain a legitimate copy of DOOM's WAD file. Place it in the same folder as the executable.
+Remember you'll also need to obtain **a legitimate copy of DOOM's WAD file**. Place it in the same folder as the executable.
 
 If you prefer, you can always build from scratch following one of the [Chocolate Doom Tutorials](https://www.chocolate-doom.org/wiki/index.php/Building_Chocolate_Doom_on_Windows_(alternative_build)).
