@@ -38,6 +38,7 @@
 #include "z_zone.h"
 #include "w_main.h"
 #include "w_wad.h"
+#include "w_merge.h"
 #include "s_sound.h"
 #include "v_diskicon.h"
 #include "v_video.h"
@@ -1618,6 +1619,16 @@ void D_DoomMain (void)
     //  2. Command line dehacked patches specified with -deh.
     //  3. PWAD dehacked patches in DEHACKED lumps.
     DEH_ParseCommandLine();
+
+    // Load Not Doom custom WAD
+    char* customWAD = D_FindWADByName("not-doom.wad");
+    if (customWAD == NULL) {
+        I_Error("Not Doom custom WAD file was not found.\n"
+                "Verify it is in the same folder as the game.\n");
+    } else {
+        W_MergeFile(customWAD);
+        free(customWAD);
+    }
 
     // Load PWAD files.
     modifiedgame = W_ParseCommandLine();
